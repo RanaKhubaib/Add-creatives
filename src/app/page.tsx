@@ -612,8 +612,8 @@ export default async function Home() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Button
-                className="bg-white text-navy hover:bg-blue-50"
                 href="/contact"
+                variant="light"
               >
                 Get a free quote <ArrowRight aria-hidden="true" size={17} />
               </Button>

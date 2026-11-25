@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "light";
 
 type ButtonProps = PropsWithChildren<{
   href?: string;
@@ -17,6 +17,7 @@ const variants: Record<ButtonVariant, string> = {
   secondary:
     "border border-navy/20 bg-white text-navy hover:border-navy hover:bg-soft",
   ghost: "text-navy hover:bg-soft",
+  light: "bg-white text-navy hover:bg-blue-50",
 };
 
 const baseClassName =

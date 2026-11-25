@@ -76,8 +76,9 @@ export default function ServicesPage() {
             </h2>
           </div>
           <Button
-            className="shrink-0 bg-white text-navy hover:bg-blue-50"
             href="/contact"
+            variant="light"
+            className="shrink-0"
           >
             Tell us about it <ArrowRight aria-hidden="true" size={17} />
           </Button>
