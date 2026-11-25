@@ -1,0 +1,127 @@
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
+import { Container } from "@/components/ui/container";
+import { siteConfig } from "@/data/site-config";
+
+export function SiteFooter() {
+  return (
+    <footer className="relative overflow-hidden bg-[#091b36] text-white">
+      <div className="h-1 w-full bg-gradient-to-r from-brand-blue via-accent to-[#8eb5ee]" />
+      <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.9fr_1.2fr] lg:py-20">
+        <div>
+          <Link
+            className="font-display text-xl font-extrabold tracking-[-0.07em]"
+            href="/"
+          >
+            <span className="text-[#8eb5ee]">ADD</span> CREATIVES
+          </Link>
+          <p className="mt-4 max-w-xs text-sm leading-6 text-blue-100/70">
+            {siteConfig.company.tagline}. Thoughtful digital work for brands
+            ready to move forward.
+          </p>
+          <div className="mt-6 flex gap-2">
+            {siteConfig.socialLinks
+              .filter((link) => link.href)
+              .map((link) => (
+                <a
+                  aria-label={link.label}
+                  className="rounded-full border border-white/15 px-3 py-2 text-xs text-blue-100 transition hover:border-white/50 hover:bg-white/10"
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {link.label}
+                </a>
+              ))}
+            {siteConfig.socialLinks.every((link) => !link.href) ? (
+              <span className="text-xs text-blue-100/50">
+                Social links coming soon
+              </span>
+            ) : null}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+            Explore
+          </h2>
+          <ul className="mt-5 space-y-3">
+            {siteConfig.menuItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  className="text-sm text-blue-100/70 transition hover:text-white"
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+            What we do
+          </h2>
+          <ul className="mt-5 space-y-3">
+            {siteConfig.services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  className="text-sm text-blue-100/70 transition hover:text-white"
+                  href={`/services/${service.slug}`}
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+            Say hello
+          </h2>
+          <ul className="mt-5 space-y-4">
+            <li className="flex gap-3 text-sm leading-6 text-blue-100/70">
+              <MapPin aria-hidden="true" className="mt-1 shrink-0 text-blue-200" size={17} />
+              {siteConfig.company.address}
+            </li>
+            <li>
+              <a
+                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                href={`tel:${siteConfig.company.phone.replace(/\s/g, "")}`}
+              >
+                <Phone aria-hidden="true" className="text-blue-200" size={17} />
+                {siteConfig.company.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                href={`mailto:${siteConfig.company.email}`}
+              >
+                <Mail aria-hidden="true" className="text-blue-200" size={17} />
+                {siteConfig.company.email}
+              </a>
+            </li>
+            <li>
+              <Link
+                className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-white"
+                href="/contact"
+              >
+                Start a project <ArrowUpRight aria-hidden="true" size={16} />
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </Container>
+      <Container className="flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-blue-100/50 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} ADD Creatives. All rights reserved.</p>
+        <a className="transition hover:text-white" href={siteConfig.company.website}>
+          {siteConfig.company.website.replace(/^https?:\/\//, "")}
+        </a>
+      </Container>
+    </footer>
+  );
+}
