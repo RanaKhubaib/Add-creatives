@@ -118,45 +118,12 @@ export function HomeHero() {
                 sizes="(max-width: 1024px) 90vw, 42vw"
                 src="/images/creative-collaboration.jpg"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-deep-blue/85 via-transparent to-deep-blue/10" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/15 via-transparent to-accent/10" />
-              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-5 sm:inset-x-7 sm:bottom-7">
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
-                    From first thought to final detail
-                  </p>
-                  <p className="mt-2 max-w-xs font-display text-xl font-medium leading-tight text-white sm:text-2xl">
-                    Built around what matters to you.
-                  </p>
-                </div>
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md">
-                  <ArrowUpRight aria-hidden="true" size={19} />
-                </span>
-              </div>
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-brand-blue/10 via-transparent to-accent/5" />
             </div>
+            <figcaption className="mt-4 text-left text-[10px] text-blue-100/55">
+              Illustrative stock image—not client work or agency staff.
+            </figcaption>
           </figure>
-          <div className="absolute -left-4 top-[18%] z-20 hidden rounded-2xl border border-white/15 bg-[#17243a]/90 p-4 shadow-xl backdrop-blur-md sm:block">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-100/60">
-              The right mix
-            </p>
-            <div className="mt-3 flex gap-1.5">
-              {capabilities.map((item, index) => (
-                <span
-                  className={`rounded-full px-2.5 py-1 text-[9px] font-semibold ${
-                    index === 0
-                      ? "bg-accent text-deep-blue"
-                      : "bg-white/10 text-white"
-                  }`}
-                  key={item}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-          <figcaption className="relative z-10 mt-3 text-right text-[10px] text-blue-100/45">
-            Illustrative stock image—not client work or agency staff.
-          </figcaption>
         </motion.div>
       </Container>
 

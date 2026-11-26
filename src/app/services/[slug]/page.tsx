@@ -89,10 +89,10 @@ export default async function ServiceDetailPage({
           </FadeIn>
           <ul className="grid gap-x-8 sm:grid-cols-2">
             {service.features.map((feature, index) => (
-              <li className="border-t border-slate-300 py-4" key={feature}>
+              <li className="service-point group border-t border-slate-300 py-4" key={feature}>
                 <FadeIn delay={index * 0.025}>
                   <span className="flex items-start gap-3 text-sm font-medium leading-6 text-ink">
-                    <span className="mt-0.5 text-xs font-semibold text-brand-blue">
+                    <span aria-hidden="true" className="service-number mt-0.5">
                       0{index + 1}
                     </span>
                     {feature}
@@ -116,8 +116,8 @@ export default async function ServiceDetailPage({
           <div className="mt-9 grid gap-8 md:grid-cols-3">
             {service.benefits.map((benefit, index) => (
               <FadeIn delay={index * 0.04} key={benefit}>
-                <div className="border-t border-slate-300 pt-5">
-                  <span className="text-xs font-semibold text-brand-blue">
+                <div className="service-point group border-t border-slate-300 pt-5">
+                  <span aria-hidden="true" className="service-number">
                     0{index + 1}
                   </span>
                   <p className="mt-3 max-w-sm font-display text-lg font-medium leading-7 text-ink">
@@ -141,9 +141,9 @@ export default async function ServiceDetailPage({
           </FadeIn>
           <ol className="mt-9 grid gap-x-8 md:grid-cols-3">
             {service.process.map((step, index) => (
-              <li className="border-t border-white/30 pt-5" key={step}>
+              <li className="service-point group border-t border-white/30 pt-5" key={step}>
                 <FadeIn delay={index * 0.04}>
-                  <span className="text-xs font-semibold text-blue-200">
+                  <span aria-hidden="true" className="service-number service-number--dark">
                     0{index + 1}
                   </span>
                   <h3 className="mt-3 font-display text-xl font-semibold text-white">

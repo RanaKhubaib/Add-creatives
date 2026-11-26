@@ -13,7 +13,7 @@ export function ServiceCard({ index = 0, service }: ServiceCardProps) {
 
   return (
     <Link
-      className="group block h-full"
+      className="service-card group block h-full"
       href={`/services/${service.slug}`}
     >
       <article className="flex h-full flex-col rounded-[1.5rem] border border-slate-200 bg-white p-3 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-[0_24px_50px_-36px_rgba(19,29,46,0.65)]">
@@ -25,8 +25,8 @@ export function ServiceCard({ index = 0, service }: ServiceCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             src={service.image}
           />
-          <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-deep-blue/75 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
-            0{index + 1} / Service
+          <span aria-hidden="true" className="service-number service-number--overlay">
+            0{index + 1}
           </span>
         </div>
         <div className="flex flex-1 flex-col px-2 pb-2 pt-4">

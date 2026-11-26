@@ -90,6 +90,53 @@ body {
   animation: glow-drift 12s ease-in-out infinite alternate;
 }
 
+.service-number {
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgb(90 109 245 / 20%);
+  border-radius: 9999px;
+  background: rgb(90 109 245 / 7%);
+  color: var(--brand-blue);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  transition:
+    transform 280ms ease,
+    color 280ms ease,
+    background-color 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.service-number--dark {
+  border-color: rgb(255 255 255 / 20%);
+  background: rgb(255 255 255 / 8%);
+  color: #c7d2fe;
+}
+
+.service-number--overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-color: rgb(255 255 255 / 30%);
+  background: rgb(11 18 32 / 75%);
+  color: white;
+  backdrop-filter: blur(12px);
+}
+
+.service-list-item:hover .service-number,
+.service-point:hover .service-number,
+.service-card:hover .service-number {
+  transform: translateY(-2px) rotate(-8deg) scale(1.05);
+  border-color: var(--brand-accent);
+  background: var(--brand-accent);
+  color: var(--brand-deep);
+  box-shadow: 0 10px 24px -12px rgb(215 255 112 / 70%);
+}
+
 .image-frame {
   isolation: isolate;
 }
