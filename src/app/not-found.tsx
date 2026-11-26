@@ -4,15 +4,15 @@ import { Container } from "@/components/ui/container";
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-[65vh] place-items-center bg-[#f7f9fd] py-20">
+    <main className="grid min-h-[65vh] place-items-center border-y border-slate-200 bg-white py-20">
       <Container className="text-center">
-        <p className="font-display text-sm font-extrabold uppercase tracking-[0.2em] text-brand-blue">
+        <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
           Page not found
         </p>
-        <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-[-0.06em] text-ink sm:text-6xl">
+        <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.05em] text-ink sm:text-6xl">
           Looks like this path took a different turn.
         </h1>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-600">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-muted">
           The page may have moved or the link may be out of date. Let&apos;s get
           you back on track.
         </p>

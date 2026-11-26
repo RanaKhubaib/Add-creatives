@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --brand-navy: #143f7a;
-  --brand-accent: #4a6fb5;
-  --brand-blue: #0b4fb3;
-  --brand-ink: #0a0f1c;
-  --brand-soft: #f3f6fb;
+  --brand-navy: #124072;
+  --brand-accent: #1b5796;
+  --brand-blue: #1b5796;
+  --brand-deep: #0d3158;
+  --brand-ink: #111820;
+  --brand-muted: #687482;
+  --brand-light-blue: #eaf1f8;
+  --brand-soft: #f5f7fa;
   --brand-white: #ffffff;
 }
 
@@ -13,15 +16,18 @@
   --color-navy: var(--brand-navy);
   --color-accent: var(--brand-accent);
   --color-brand-blue: var(--brand-blue);
+  --color-deep-blue: var(--brand-deep);
   --color-ink: var(--brand-ink);
+  --color-muted: var(--brand-muted);
+  --color-light-blue: var(--brand-light-blue);
   --color-soft: var(--brand-soft);
   --color-white: var(--brand-white);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-plus-jakarta);
+  --font-display: var(--font-inter);
 }
 
 @utility container-shell {
-  width: min(100% - 2.5rem, 75rem);
+  width: min(100% - 2.5rem, 76rem);
   margin-inline: auto;
 }
 
@@ -40,51 +46,8 @@ body {
 }
 
 ::selection {
-  background: #dce8fb;
+  background: var(--brand-light-blue);
   color: var(--brand-navy);
-}
-
-.slash-shape {
-  display: block;
-  width: 3.25rem;
-  height: 0.65rem;
-  transform: skewX(-38deg);
-  background: currentColor;
-}
-
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(20, 63, 122, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 63, 122, 0.045) 1px, transparent 1px);
-  background-size: 34px 34px;
-  mask-image: linear-gradient(to bottom right, black 10%, transparent 76%);
-}
-
-.marquee-track {
-  animation: marquee 34s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-.hero-photo {
-  animation: hero-photo-drift 22s ease-in-out infinite alternate;
-  transform-origin: center;
-}
-
-.hero-orbit {
-  animation: orbit-drift 32s linear infinite;
-}
-
-.whatsapp-pulse::before {
-  position: absolute;
-  z-index: -1;
-  border: 1px solid rgba(31, 174, 98, 0.48);
-  border-radius: inherit;
-  content: "";
-  inset: -5px;
-  animation: whatsapp-pulse 2.4s ease-out infinite;
 }
 
 .article-content p {
@@ -94,46 +57,16 @@ body {
   line-height: 1.9;
 }
 
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
+.article-content h2 {
+  margin-top: 2.5rem;
+  color: var(--brand-ink);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
 
-@keyframes whatsapp-pulse {
-  0% {
-    opacity: 0.75;
-    transform: scale(0.94);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.34);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes hero-photo-drift {
-  from {
-    transform: scale(1.02) translate3d(-0.5%, 0, 0);
-  }
-  to {
-    transform: scale(1.12) translate3d(0.5%, -0.5%, 0);
-  }
-}
-
-@keyframes orbit-drift {
-  to {
-    transform: rotate(360deg);
-  }
+.editorial-rule {
+  border-top: 1px solid #dce3ea;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -144,12 +77,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .marquee-track,
-  .whatsapp-pulse::before,
-  .hero-photo,
-  .hero-orbit {
-    animation: none !important;
   }
 }

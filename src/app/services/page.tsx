@@ -1,24 +1,39 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { PageHero } from "@/components/site/page-hero";
+import { SectionHeading } from "@/components/site/section-heading";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PageHero } from "@/components/site/page-hero";
-import { SectionHeading } from "@/components/site/section-heading";
-import { ServiceCard } from "@/components/site/service-card";
 import { siteConfig } from "@/data/site-config";
 
-const benefits = [
-  "A plan shaped around your audience and business goals",
-  "Creative and technical work that feel like one experience",
-  "Clear communication from first conversation to handover",
-  "A practical next step, whether the brief is big or small",
+const serviceConnections = [
+  {
+    number: "01",
+    title: "A clear foundation",
+    text: "Strategy and brand direction help every later decision stay connected to the audience and purpose.",
+  },
+  {
+    number: "02",
+    title: "A useful experience",
+    text: "Design, development, and content make it easier for people to understand the offer and take a next step.",
+  },
+  {
+    number: "03",
+    title: "A way to learn",
+    text: "Search, social, and paid campaigns create opportunities to share the work and learn from real response.",
+  },
 ];
 
 export const metadata: Metadata = {
-  title: "Digital Services | ADD Creatives",
+  title: "Creative and Digital Services | ADD Creatives",
   description:
     "Explore web design, SEO, social media, branding, paid ads, and content services from ADD Creatives.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function ServicesPage() {
@@ -27,37 +42,115 @@ export default function ServicesPage() {
       <PageHero
         description="Build a stronger digital presence with a team that connects strategy, creative, and technology around your goals."
         eyebrow="Services"
-        title="The right support for your next stage of growth."
+        image="/images/digital-product.jpg"
+        imageAlt="A desktop monitor and tablet displaying digital interface designs; illustrative stock photography."
+        imageNote="Illustrative stock image—not a client website or ADD Creatives project."
+        title="Creative and digital services built around your goals."
       />
+
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {siteConfig.services.map((service, index) => (
-              <FadeIn delay={index * 0.05} key={service.slug}>
-                <ServiceCard index={index} service={service} />
-              </FadeIn>
-            ))}
+          <FadeIn>
+            <div className="grid gap-6 md:grid-cols-[0.7fr_1.3fr] md:items-end">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+                  What we can do together
+                </p>
+                <h2 className="mt-4 max-w-md font-display text-3xl font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-4xl">
+                  Choose the right next step.
+                </h2>
+              </div>
+              <p className="max-w-2xl text-base leading-7 text-muted">
+                Every service can stand on its own. When a brief needs more
+                than one discipline, we connect the work around a shared
+                direction.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="mt-10">
+            {siteConfig.services.map((service, index) => {
+              const imageFirst = index % 2 === 1;
+              return (
+                <FadeIn key={service.slug}>
+                  <article className="grid gap-6 border-t border-slate-300 py-8 md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
+                    <Link
+                      aria-label={`Explore ${service.title}`}
+                      className={`group relative block aspect-[1.55] overflow-hidden bg-light-blue ${
+                        imageFirst ? "md:order-2" : ""
+                      }`}
+                      href={`/services/${service.slug}`}
+                    >
+                      <Image
+                        alt={service.imageAlt}
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 48vw"
+                        src={service.image}
+                      />
+                    </Link>
+                    <div className={imageFirst ? "md:order-1" : ""}>
+                      <p className="text-xs font-semibold text-brand-blue">
+                        0{index + 1} <span aria-hidden="true">/</span> Service
+                      </p>
+                      <h3 className="mt-3 max-w-lg font-display text-2xl font-semibold leading-tight tracking-[-0.035em] text-ink sm:text-3xl">
+                        <Link
+                          className="transition-colors hover:text-brand-blue"
+                          href={`/services/${service.slug}`}
+                        >
+                          {service.title}
+                        </Link>
+                      </h3>
+                      <p className="mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base">
+                        {service.shortDescription}
+                      </p>
+                      <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                        {service.features.slice(0, 3).map((feature) => (
+                          <li
+                            className="text-xs font-medium text-slate-600"
+                            key={feature}
+                          >
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy transition-colors hover:text-brand-blue"
+                        href={`/services/${service.slug}`}
+                      >
+                        Explore this service
+                        <ArrowUpRight aria-hidden="true" size={16} />
+                      </Link>
+                    </div>
+                  </article>
+                </FadeIn>
+              );
+            })}
           </div>
         </Container>
       </section>
-      <section className="bg-soft py-20 sm:py-24">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
+
+      <section className="border-y border-slate-200 bg-soft py-16 sm:py-20 lg:py-24">
+        <Container>
           <FadeIn>
             <SectionHeading
-              description="Great work starts by understanding the people you want to reach and the change you want to make. We keep the process clear and collaborative."
-              eyebrow="Why work with ADD Creatives"
-              title="One clear direction. The right people around it."
+              description="Services are most useful when they support one another. We keep the plan focused on what your audience and business need."
+              eyebrow="Connected thinking"
+              title="One clear direction, carried through."
             />
           </FadeIn>
-          <div className="space-y-3">
-            {benefits.map((benefit, index) => (
-              <FadeIn delay={index * 0.05} key={benefit}>
-                <div className="flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-white p-5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand-blue">
-                    <Check aria-hidden="true" size={16} />
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {serviceConnections.map((item, index) => (
+              <FadeIn delay={index * 0.05} key={item.number}>
+                <div className="border-t border-slate-300 pt-5">
+                  <span className="text-xs font-semibold text-brand-blue">
+                    {item.number}
                   </span>
-                  <p className="text-sm font-semibold leading-6 text-ink">
-                    {benefit}
+                  <h3 className="mt-3 font-display text-xl font-semibold text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">
+                    {item.text}
                   </p>
                 </div>
               </FadeIn>
@@ -65,22 +158,19 @@ export default function ServicesPage() {
           </div>
         </Container>
       </section>
-      <section className="py-16 sm:py-20">
-        <Container className="flex flex-col items-start justify-between gap-6 rounded-[2rem] bg-navy p-7 text-white sm:flex-row sm:items-center sm:p-10">
+
+      <section className="bg-navy py-14 text-white sm:py-16">
+        <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
               Have a project in mind?
             </p>
-            <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-semibold leading-tight sm:text-3xl">
               Let&apos;s find the right place to start.
             </h2>
           </div>
-          <Button
-            href="/contact"
-            variant="light"
-            className="shrink-0"
-          >
-            Tell us about it <ArrowRight aria-hidden="true" size={17} />
+          <Button href="/contact" variant="light">
+            Tell us about it <ArrowRight aria-hidden="true" size={16} />
           </Button>
         </Container>
       </section>

@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -9,6 +10,9 @@ interface PageHeroProps {
   description: string;
   actionLabel?: string;
   actionHref?: string;
+  image?: string;
+  imageAlt?: string;
+  imageNote?: string;
 }
 
 export function PageHero({
@@ -16,37 +20,59 @@ export function PageHero({
   actionLabel = "Talk to our team",
   description,
   eyebrow,
+  image,
+  imageAlt = "",
+  imageNote,
   title,
 }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden bg-[#f7f9fd] py-16 sm:py-20 lg:py-28">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-36 -top-56 -z-10 h-[42rem] w-[42rem] rounded-full bg-[radial-gradient(circle,_#dbe8fb_0%,_rgba(219,232,251,0)_68%)]"
-      />
-      <Container className="relative">
-        <div className="mb-6 flex items-center gap-2 text-xs font-medium text-slate-500">
+    <section className="border-b border-slate-200 bg-white py-12 sm:py-16 lg:py-20">
+      <Container>
+        <div className="mb-8 flex items-center gap-2 text-xs font-medium text-muted">
           <Link className="transition hover:text-brand-blue" href="/">
             Home
           </Link>
           <span aria-hidden="true">/</span>
           <span>{eyebrow}</span>
         </div>
-        <div className="grid items-end gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">
+        <div
+          className={`grid items-center gap-8 lg:gap-14 ${
+            image ? "lg:grid-cols-[1fr_0.9fr]" : "lg:grid-cols-[1.15fr_0.85fr]"
+          }`}
+        >
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
               {eyebrow}
             </p>
-            <h1 className="mt-4 font-display text-[clamp(2.6rem,6.8vw,5.6rem)] font-extrabold leading-[1.02] tracking-[-0.065em] text-ink">
+            <h1 className="mt-4 font-display text-[clamp(2.5rem,5.8vw,4.75rem)] font-bold leading-[1.04] tracking-[-0.055em] text-ink">
               {title}
             </h1>
-          </div>
-          <div className="max-w-xl lg:justify-self-end">
-            <p className="text-lg leading-8 text-slate-600">{description}</p>
-            <Button className="mt-6" href={actionHref}>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+              {description}
+            </p>
+            <Button className="mt-7" href={actionHref}>
               {actionLabel} <ArrowRight aria-hidden="true" size={17} />
             </Button>
           </div>
+          {image ? (
+            <figure className="min-w-0">
+              <div className="relative aspect-[1.24] overflow-hidden bg-light-blue">
+                <Image
+                  alt={imageAlt}
+                  className="object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                  src={image}
+                />
+              </div>
+              {imageNote ? (
+                <figcaption className="mt-2 text-xs leading-5 text-muted">
+                  {imageNote}
+                </figcaption>
+              ) : null}
+            </figure>
+          ) : null}
         </div>
       </Container>
     </section>

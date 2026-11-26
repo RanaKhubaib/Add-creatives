@@ -1,13 +1,13 @@
 import { ArrowRight, Check } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
+import { PageHero } from "@/components/site/page-hero";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PageHero } from "@/components/site/page-hero";
-import { SectionHeading } from "@/components/site/section-heading";
 
 const values = [
-  ["Curiosity", "We ask good questions before we reach for easy answers."],
+  ["Curiosity", "We ask good questions before reaching for easy answers."],
   ["Clarity", "We make the complex easier to understand and act on."],
   ["Craft", "We care about the thinking and the details in equal measure."],
   ["Collaboration", "The best work happens when people build it together."],
@@ -41,38 +41,46 @@ const disciplines = [
 export const metadata: Metadata = {
   title: "About ADD Creatives",
   description:
-    "Meet ADD Creatives, a Lahore-based creative and digital team helping businesses move forward online.",
+    "Meet ADD Creatives, a Lahore-based creative and digital agency connecting strategy, design, technology, and marketing.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
   return (
     <main>
       <PageHero
-        description="We are a creative and digital team based in Lahore. We help businesses find a clear direction, show up with confidence, and move forward online."
-        eyebrow="About us"
-        title="We help brands grow in the digital world."
+        description="We are a creative and digital agency based in Lahore. We help businesses find a clear direction, show up with confidence, and move forward online."
+        eyebrow="About ADD Creatives"
+        image="/images/creative-collaboration.jpg"
+        imageAlt="People reviewing creative work together around a laptop; illustrative stock photography, not ADD Creatives staff."
+        imageNote="Illustrative stock image—not a photograph of the ADD Creatives team."
+        title="A thoughtful partner for your next digital step."
       />
-      <section className="py-20 sm:py-24">
-        <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+
+      <section className="py-16 sm:py-20 lg:py-24">
+        <Container className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <FadeIn>
-            <SectionHeading
-              description="ADD Creatives brings the people and disciplines behind a good digital idea together."
-              eyebrow="Our story"
-              title="Make the complicated feel clear."
-            />
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+              Our approach
+            </p>
+            <h2 className="mt-4 max-w-md font-display text-3xl font-semibold leading-tight tracking-[-0.045em] text-ink sm:text-4xl">
+              Make the complicated feel clear.
+            </h2>
           </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="space-y-5 text-base leading-8 text-slate-600">
+          <FadeIn delay={0.06}>
+            <div className="space-y-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
               <p>
                 Strong brands are built on more than a good-looking website.
                 They need clear thinking, useful creative, and a consistent
-                experience at every point where people meet the business.
+                experience wherever people meet the business.
               </p>
               <p>
-                That is why ADD Creatives connects strategy, design,
-                development, and marketing. We listen first, build a practical
-                direction together, and make work your team can confidently
-                put into the world.
+                ADD Creatives connects strategy, design, development, and
+                marketing. We listen first, build a practical direction
+                together, and make work your team can confidently put into the
+                world.
               </p>
               <p>
                 We are based in Lahore, Pakistan, and work with businesses
@@ -83,8 +91,9 @@ export default function AboutPage() {
           </FadeIn>
         </Container>
       </section>
-      <section className="bg-[#0d2648] py-16 text-white sm:py-20">
-        <Container className="grid gap-5 md:grid-cols-2">
+
+      <section className="bg-deep-blue py-14 text-white sm:py-18 lg:py-20">
+        <Container className="grid gap-10 md:grid-cols-2 md:gap-16">
           {[
             {
               eyebrow: "Our mission",
@@ -96,16 +105,16 @@ export default function AboutPage() {
               title: "A digital world with more useful, human experiences.",
               text: "We want to help build brands and products that respect people's time, answer real needs, and make a positive difference for the teams behind them.",
             },
-          ].map((item, index) => (
-            <FadeIn delay={index * 0.08} key={item.eyebrow}>
-              <div className="h-full rounded-[1.5rem] border border-white/15 bg-white/5 p-7 sm:p-9">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+          ].map((item) => (
+            <FadeIn key={item.eyebrow}>
+              <div className="border-t border-white/30 pt-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">
                   {item.eyebrow}
                 </p>
-                <h2 className="mt-5 font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+                <h2 className="mt-5 max-w-lg font-display text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-3xl">
                   {item.title}
                 </h2>
-                <p className="mt-4 text-sm leading-7 text-blue-100/70">
+                <p className="mt-4 max-w-lg text-sm leading-7 text-blue-100/80">
                   {item.text}
                 </p>
               </div>
@@ -113,111 +122,141 @@ export default function AboutPage() {
           ))}
         </Container>
       </section>
-      <section className="py-20 sm:py-24">
+
+      <section className="py-16 sm:py-20 lg:py-24">
         <Container>
           <FadeIn>
-            <SectionHeading
-              description="A few simple principles keep our work focused and our partnerships honest."
-              eyebrow="What guides us"
-              title="The values behind the work."
-            />
+            <div className="grid gap-6 md:grid-cols-[0.7fr_1.3fr] md:items-end">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+                  What guides us
+                </p>
+                <h2 className="mt-4 max-w-sm font-display text-3xl font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-4xl">
+                  The values behind the work.
+                </h2>
+              </div>
+              <p className="max-w-2xl text-base leading-7 text-muted">
+                A few simple principles keep our work focused and our
+                partnerships honest, from the first conversation through
+                delivery.
+              </p>
+            </div>
           </FadeIn>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {values.map(([title, text], index) => (
-              <FadeIn delay={index * 0.04} key={title}>
-                <div className="h-full rounded-2xl border border-slate-200 p-6">
-                  <span className="font-display text-sm font-extrabold text-brand-blue">
-                    0{index + 1}
-                  </span>
-                  <h3 className="mt-5 font-display text-xl font-extrabold text-ink">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
-                </div>
+              <FadeIn
+                className="border-t border-slate-300 py-5"
+                delay={index * 0.035}
+                key={title}
+              >
+                <p className="text-xs font-semibold text-brand-blue">
+                  0{index + 1}
+                </p>
+                <h3 className="mt-3 font-display text-xl font-semibold text-ink">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
               </FadeIn>
             ))}
           </div>
         </Container>
       </section>
-      <section className="bg-soft py-20 sm:py-24">
-        <Container>
+
+      <section className="border-y border-slate-200 bg-soft py-16 sm:py-20 lg:py-24">
+        <Container className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <FadeIn>
-            <SectionHeading
-              description="The right mix of skills depends on the brief. Here are the disciplines we bring together."
-              eyebrow="How we think"
-              title="Different strengths. One shared direction."
-            />
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+              How we think
+            </p>
+            <h2 className="mt-4 max-w-md font-display text-3xl font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-4xl">
+              Different strengths. One shared direction.
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-6 text-muted">
+              The right mix of skills depends on the brief. We bring connected
+              disciplines together when they help move the work forward.
+            </p>
           </FadeIn>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="divide-y divide-slate-300 border-y border-slate-300">
             {disciplines.map((item, index) => (
-              <FadeIn delay={index * 0.06} key={item.number}>
-                <div className="h-full rounded-2xl bg-white p-5 shadow-sm">
-                  <span className="font-display text-sm font-extrabold text-brand-blue">
+              <FadeIn delay={index * 0.04} key={item.number}>
+                <div className="grid gap-3 py-5 sm:grid-cols-[3rem_0.65fr_1.35fr] sm:gap-5">
+                  <span className="text-xs font-semibold text-brand-blue">
                     {item.number}
                   </span>
-                  <h3 className="mt-8 font-display text-xl font-extrabold text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    {item.text}
-                  </p>
+                  <h3 className="font-semibold text-ink">{item.title}</h3>
+                  <p className="text-sm leading-6 text-muted">{item.text}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
         </Container>
       </section>
-      <section className="py-20 sm:py-24">
-        <Container className="grid items-center gap-10 lg:grid-cols-2">
+
+      <section className="py-16 sm:py-20 lg:py-24">
+        <Container className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <FadeIn>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-blue">
-              What it feels like to work together
+            <figure>
+              <div className="relative aspect-[1.4] overflow-hidden bg-light-blue">
+                <Image
+                  alt="A notebook with interface sketches and planning notes, shown as illustrative stock photography."
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  src="/images/digital-studio.jpg"
+                />
+              </div>
+              <figcaption className="mt-2 text-xs text-muted">
+                Illustrative stock image, not ADD Creatives client work.
+              </figcaption>
+            </figure>
+          </FadeIn>
+          <FadeIn delay={0.06}>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
+              Working together
             </p>
-            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.05em] text-ink sm:text-4xl">
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-4xl">
               A thoughtful partner, not another layer of process.
             </h2>
-            <p className="mt-5 text-base leading-7 text-slate-600">
+            <p className="mt-4 text-base leading-7 text-muted">
               We keep the work human: clear conversations, honest feedback, and
               enough structure to make good decisions without slowing ideas
               down.
             </p>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div className="space-y-3">
+            <ul className="mt-6 space-y-3">
               {[
                 "You know what is happening and what comes next.",
                 "The work connects back to the goal we agreed together.",
                 "You leave with useful tools and a clear way forward.",
               ].map((text) => (
-                <div
-                  className="flex gap-3 rounded-xl border border-slate-200 p-4 text-sm font-semibold text-slate-700"
-                  key={text}
-                >
-                  <Check aria-hidden="true" className="shrink-0 text-brand-blue" size={18} />
+                <li className="flex items-start gap-3 text-sm text-ink" key={text}>
+                  <Check
+                    aria-hidden="true"
+                    className="mt-0.5 shrink-0 text-brand-blue"
+                    size={17}
+                  />
                   {text}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </FadeIn>
         </Container>
       </section>
-      <section className="px-5 pb-20 sm:px-8 sm:pb-24">
-        <Container className="flex flex-col items-start justify-between gap-6 rounded-[2rem] bg-gradient-to-br from-navy to-accent p-8 text-white sm:flex-row sm:items-center sm:p-12">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+
+      <section className="bg-navy py-14 text-white sm:py-16">
+        <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <FadeIn>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
               Let&apos;s make something meaningful
             </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-semibold leading-tight sm:text-3xl">
               Tell us what you want to move forward.
             </h2>
-          </div>
-          <Button
-            href="/contact"
-            variant="light"
-            className="shrink-0"
-          >
-            Start a conversation <ArrowRight aria-hidden="true" size={17} />
-          </Button>
+          </FadeIn>
+          <FadeIn delay={0.06}>
+            <Button href="/contact" variant="light">
+              Start a conversation <ArrowRight aria-hidden="true" size={16} />
+            </Button>
+          </FadeIn>
         </Container>
       </section>
     </main>

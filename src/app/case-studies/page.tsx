@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Case Studies | ADD Creatives",
   description:
     "Explore the thinking behind ADD Creatives projects and illustrative concepts.",
+  alternates: {
+    canonical: "/case-studies",
+  },
 };
 
 export default async function CaseStudiesPage() {
@@ -21,20 +24,23 @@ export default async function CaseStudiesPage() {
       <PageHero
         description="A look at how clear strategy and thoughtful creative can shape stronger digital experiences. Sample concepts are labelled while client work is being prepared."
         eyebrow="Case studies"
+        image="/images/campaign-workshop.jpg"
+        imageAlt="A team reviewing campaign materials around a table; illustrative stock photography, not a client project."
+        imageNote="Illustrative stock image—not completed client work."
         title="The thinking behind the work."
       />
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
           {caseStudies.some((study) => study.isSample) ? (
-            <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
-              Items marked as sample concepts are illustrative, not completed
-              client projects or verified results.
+            <div className="mb-10 border-l-2 border-brand-blue bg-light-blue px-5 py-4 text-sm leading-6 text-navy">
+              Items marked as illustrative concepts are not completed client
+              projects or verified results.
             </div>
           ) : null}
           <SectionHeading
-            description="Filter by discipline to explore the kind of challenge and direction we like to work on."
+            description="Filter by discipline to explore the challenges and creative directions behind each entry."
             eyebrow="Selected work"
-            title="A few ways to make an idea real."
+            title="Ideas, approaches, and outcomes."
           />
           <div className="mt-8">
             <CaseStudyFilter studies={caseStudies} />

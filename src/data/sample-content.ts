@@ -14,7 +14,8 @@ export interface CaseStudy {
   services: string[];
   result: string;
   coverStyle: string;
-  coverImage?: string;
+  coverImage: string;
+  coverImageAlt: string;
   sections: ContentSection[];
 }
 
@@ -26,7 +27,8 @@ export interface BlogPost {
   date: string;
   readTime: string;
   coverStyle: string;
-  coverImage?: string;
+  coverImage: string;
+  coverImageAlt: string;
   sections: ContentSection[];
 }
 
@@ -43,7 +45,9 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand strategy", "Web design", "Development"],
     result: "A more considered path from first visit to enquiry",
     coverStyle: "from-[#102b56] via-[#2761a8] to-[#a4c7f5]",
-    coverImage: "/images/digital-studio.jpg",
+    coverImage: "/images/web-development.jpg",
+    coverImageAlt:
+      "A laptop displaying a website development workspace, used to illustrate this sample concept rather than client work.",
     sections: [
       {
         heading: "The opportunity",
@@ -71,7 +75,9 @@ export const caseStudies: CaseStudy[] = [
     services: ["Branding", "Content strategy", "Social media"],
     result: "One consistent story across every customer touchpoint",
     coverStyle: "from-[#122c50] via-[#516fd0] to-[#eabf9b]",
-    coverImage: "/images/brand-creative.jpg",
+    coverImage: "/images/brand-system.jpg",
+    coverImageAlt:
+      "A desktop screen showing a visual identity system, used as illustrative stock photography.",
     sections: [
       {
         heading: "The opportunity",
@@ -99,7 +105,9 @@ export const caseStudies: CaseStudy[] = [
     services: ["Paid media", "Landing page", "Creative"],
     result: "A connected journey from ad click to useful next step",
     coverStyle: "from-[#102946] via-[#148a94] to-[#c3e3d3]",
-    coverImage: "/images/team-strategy.jpg",
+    coverImage: "/images/campaign-workshop.jpg",
+    coverImageAlt:
+      "A team reviewing campaign materials, shown as a stock image for an illustrative concept.",
     sections: [
       {
         heading: "The opportunity",
@@ -128,6 +136,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     coverStyle: "from-[#102b56] via-[#2761a8] to-[#a4c7f5]",
     coverImage: "/images/digital-studio.jpg",
+    coverImageAlt:
+      "A notebook with interface sketches and planning notes, shown as illustrative stock photography.",
     sections: [
       {
         heading: "Start with what visitors need to know",
@@ -156,7 +166,9 @@ export const blogPosts: BlogPost[] = [
     date: "2026-09-24",
     readTime: "5 min read",
     coverStyle: "from-[#152b4c] via-[#516fd0] to-[#eabf9b]",
-    coverImage: "/images/team-strategy.jpg",
+    coverImage: "/images/seo-analytics.jpg",
+    coverImageAlt:
+      "An analytics dashboard on a laptop, shown as illustrative stock photography rather than client data.",
     sections: [
       {
         heading: "Begin with the business goal",
@@ -182,6 +194,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "4 min read",
     coverStyle: "from-[#182847] via-[#148a94] to-[#c3e3d3]",
     coverImage: "/images/brand-creative.jpg",
+    coverImageAlt:
+      "A person using a tablet to review visual design work, shown as illustrative stock photography.",
     sections: [
       {
         heading: "Consistency is a set of signals",
@@ -206,7 +220,9 @@ export const blogPosts: BlogPost[] = [
     date: "2026-07-07",
     readTime: "5 min read",
     coverStyle: "from-[#102b56] via-[#26628a] to-[#dbc49d]",
-    coverImage: "/images/digital-studio.jpg",
+    coverImage: "/images/digital-product.jpg",
+    coverImageAlt:
+      "A desktop monitor and tablet displaying digital product designs, shown as illustrative stock photography.",
     sections: [
       {
         heading: "Gather what already exists",

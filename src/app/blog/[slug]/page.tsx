@@ -26,11 +26,15 @@ export async function generateMetadata({
   return {
     title: `${post.title} | ADD Creatives Journal`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.excerpt,
       publishedTime: post.date,
+      images: [post.coverImage],
     },
   };
 }
@@ -56,14 +60,17 @@ export default async function BlogArticlePage({
         actionHref="/blog"
         description={post.excerpt}
         eyebrow={post.category}
+        image={post.coverImage}
+        imageAlt={post.coverImageAlt}
+        imageNote="Illustrative stock image accompanying this article."
         title={post.title}
       />
       <article className="py-12 sm:py-16">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
           <div className="mx-auto w-full max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-500">
-              <span>ADD Creatives Editorial</span>
-              <span aria-hidden="true" className="h-1 w-1 rounded-full bg-slate-300" />
+            <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 pb-5 text-xs font-medium text-muted">
+              <span>{post.category}</span>
+              <span aria-hidden="true" className="h-1 w-1 bg-slate-300" />
               <time dateTime={post.date}>
                 {new Date(`${post.date}T12:00:00`).toLocaleDateString("en", {
                   day: "numeric",
@@ -71,46 +78,37 @@ export default async function BlogArticlePage({
                   year: "numeric",
                 })}
               </time>
-              <span aria-hidden="true" className="h-1 w-1 rounded-full bg-slate-300" />
+              <span aria-hidden="true" className="h-1 w-1 bg-slate-300" />
               <span className="inline-flex items-center gap-1">
                 <Clock3 aria-hidden="true" size={13} />
                 {post.readTime}
               </span>
             </div>
-            <div
-              aria-label={post.category}
-              className={`relative isolate mt-7 flex aspect-[1.9] items-end overflow-hidden rounded-3xl bg-gradient-to-br ${post.coverStyle} p-6 sm:p-10`}
-              role="img"
-            >
-              <div className="absolute -right-8 -top-28 -z-10 h-72 w-72 rounded-full border border-white/25" />
-              <div className="absolute -right-2 -top-16 -z-10 h-56 w-56 rounded-full border border-white/25" />
-              <span className="font-display text-3xl font-extrabold tracking-[-0.06em] text-white sm:text-5xl">
-                ADD<span className="text-blue-200">/</span>IDEAS
-              </span>
-            </div>
-            <div className="article-content mt-8">
-              <p className="text-xl font-medium leading-8 text-ink">
-                {post.excerpt}
-              </p>
+            <div className="article-content mt-7">
               {post.sections.map((section, index) => (
-                <section className="mt-10 scroll-mt-32" id={`section-${index + 1}`} key={section.heading}>
-                  <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink">
-                    {section.heading}
-                  </h2>
+                <section
+                  className="mt-10 scroll-mt-32"
+                  id={`section-${index + 1}`}
+                  key={section.heading}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-blue">
+                    0{index + 1}
+                  </p>
+                  <h2 className="mt-2">{section.heading}</h2>
                   <p>{section.body}</p>
                 </section>
               ))}
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-6">
               <Link
-                className="inline-flex items-center gap-2 text-sm font-bold text-brand-blue"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-navy transition-colors hover:text-brand-blue"
                 href="/blog"
               >
                 <ArrowLeft aria-hidden="true" size={16} />
                 Back to the journal
               </Link>
               <a
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-blue"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-brand-blue"
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`}
                 rel="noreferrer"
                 target="_blank"
@@ -119,14 +117,14 @@ export default async function BlogArticlePage({
               </a>
             </div>
           </div>
-          <aside className="h-fit rounded-2xl border border-slate-200 p-5 lg:sticky lg:top-32">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-blue">
+          <aside className="h-fit border-y border-slate-300 py-5 lg:sticky lg:top-32">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue">
               In this article
             </p>
             <nav aria-label="Article contents" className="mt-4 space-y-3">
               {post.sections.map((section, index) => (
                 <a
-                  className="block text-sm leading-5 text-slate-600 transition hover:text-brand-blue"
+                  className="block text-sm leading-5 text-muted transition-colors hover:text-brand-blue"
                   href={`#section-${index + 1}`}
                   key={section.heading}
                 >
@@ -134,13 +132,13 @@ export default async function BlogArticlePage({
                 </a>
               ))}
             </nav>
-            <div className="mt-7 border-t border-slate-200 pt-5">
-              <p className="text-sm font-bold text-ink">Have a question?</p>
-              <p className="mt-2 text-xs leading-5 text-slate-500">
+            <div className="mt-7 border-t border-slate-300 pt-5">
+              <p className="text-sm font-semibold text-ink">Have a question?</p>
+              <p className="mt-2 text-xs leading-5 text-muted">
                 Talk to our team about a challenge you are working through.
               </p>
               <Link
-                className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-brand-blue"
+                className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-navy transition-colors hover:text-brand-blue"
                 href="/contact"
               >
                 Get in touch <ArrowUpRight aria-hidden="true" size={14} />
@@ -150,12 +148,12 @@ export default async function BlogArticlePage({
         </Container>
       </article>
       {relatedPosts.length ? (
-        <section className="bg-soft py-16 sm:py-20">
+        <section className="border-t border-slate-200 bg-soft py-16 sm:py-20">
           <Container>
-            <h2 className="mb-8 font-display text-2xl font-extrabold text-ink sm:text-3xl">
+            <h2 className="mb-8 font-display text-2xl font-semibold text-ink sm:text-3xl">
               Keep exploring
             </h2>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2">
               {relatedPosts.map((related) => (
                 <BlogCard key={related.slug} post={related} />
               ))}

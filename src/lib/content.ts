@@ -48,7 +48,11 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
             data.coverStyle,
             "from-[#102b56] via-[#2761a8] to-[#a4c7f5]",
           ),
-          coverImage: readLocalImage(data.coverImage),
+          coverImage: readLocalImage(data.coverImage) ?? "/images/digital-studio.jpg",
+          coverImageAlt: readString(
+            data.coverImageAlt,
+            "Illustrative stock photography accompanying this article.",
+          ),
           sections: readSections(data.sections),
         };
       })
@@ -93,7 +97,11 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
           data.coverStyle,
           "from-[#102b56] via-[#2761a8] to-[#a4c7f5]",
         ),
-        coverImage: readLocalImage(data.coverImage),
+        coverImage: readLocalImage(data.coverImage) ?? "/images/digital-studio.jpg",
+        coverImageAlt: readString(
+          data.coverImageAlt,
+          "Illustrative stock photography accompanying this concept.",
+        ),
         sections: readSections(data.sections),
       };
     });

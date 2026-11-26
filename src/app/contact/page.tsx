@@ -1,4 +1,4 @@
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/site/contact-form";
 import { Container } from "@/components/ui/container";
@@ -7,14 +7,15 @@ import { PageHero } from "@/components/site/page-hero";
 import { siteConfig } from "@/data/site-config";
 import type { ReactNode } from "react";
 
-const mapQuery = encodeURIComponent(
-  "405 E Block PIA Main Boulevard, PIA Housing Scheme, Lahore",
-);
+const mapQuery = encodeURIComponent(siteConfig.company.address);
 
 export const metadata: Metadata = {
   title: "Contact ADD Creatives",
   description:
     "Start a project with ADD Creatives. Tell us what you are building, changing, or trying to solve.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
@@ -23,18 +24,21 @@ export default function ContactPage() {
       <PageHero
         actionLabel="Message on WhatsApp"
         actionHref={`https://wa.me/${siteConfig.company.whatsapp}`}
-        description="Tell us what you are working on, what you would like to change, or where you need a hand. We will help you find a clear next step."
+        description="Tell us what you are working on or what you would like to change. We will help you find a clear next step."
         eyebrow="Contact"
-        title="Let’s talk about what comes next."
+        image="/images/campaign-workshop.jpg"
+        imageAlt="A team reviewing campaign materials around a table; illustrative stock photography, not ADD Creatives staff."
+        imageNote="Illustrative stock image—not a photograph of ADD Creatives staff."
+        title="Let’s make something meaningful."
       />
       <section className="py-16 sm:py-20 lg:py-24">
-        <Container className="grid items-start gap-8 lg:grid-cols-[0.78fr_1.22fr]">
+        <Container className="grid items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <FadeIn>
-            <div className="rounded-[1.75rem] bg-[#0d2648] p-6 text-white sm:p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+            <div className="bg-deep-blue p-6 text-white sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
                 Get in touch
               </p>
-              <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight">
+              <h2 className="mt-3 font-display text-2xl font-semibold leading-tight">
                 A good conversation is a good place to start.
               </h2>
               <p className="mt-3 text-sm leading-6 text-blue-100/70">
@@ -60,32 +64,33 @@ export default function ContactPage() {
                   label="Email"
                   value={siteConfig.company.email}
                 />
-                <div className="flex gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+                <a
+                  className="flex items-start gap-3 border border-white/15 p-4 text-sm leading-6 text-white transition-colors hover:bg-white/10"
+                  href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   <MapPin
                     aria-hidden="true"
                     className="mt-0.5 shrink-0 text-blue-200"
                     size={18}
                   />
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200">
-                      Visit us
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-200">
+                      Lahore, Pakistan
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-white">
+                    <p className="mt-1 text-sm text-white">
                       {siteConfig.company.address}
                     </p>
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-100">
+                      Open in Google Maps
+                      <ArrowUpRight aria-hidden="true" size={13} />
+                    </span>
                   </div>
-                </div>
-              </div>
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">
-                  Working hours
-                </p>
-                <p className="mt-2 text-sm text-blue-100/80">
-                  Monday to Saturday · 10:00–19:00 PKT
-                </p>
+                </a>
               </div>
             </div>
-            <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-slate-200">
+            <div className="mt-5 overflow-hidden border border-slate-200">
               <iframe
                 className="h-64 w-full"
                 loading="lazy"
@@ -96,11 +101,14 @@ export default function ContactPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
-            <div className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-45px_rgba(10,15,28,0.3)] sm:p-9">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-blue">
+            <div
+              className="border border-slate-200 bg-white p-6 sm:p-9"
+              id="project-enquiry"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
                 Project enquiry
               </p>
-              <h2 className="mt-3 font-display text-2xl font-extrabold text-ink sm:text-3xl">
+              <h2 className="mt-3 font-display text-2xl font-semibold text-ink sm:text-3xl">
                 Tell us a little about it.
               </h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -131,14 +139,14 @@ function ContactLink({
 }) {
   return (
     <a
-      className="flex gap-3 rounded-xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
+      className="flex gap-3 border border-white/15 bg-white/5 p-4 transition-colors hover:bg-white/10"
       href={href}
       rel={href.startsWith("https://") ? "noreferrer" : undefined}
       target={href.startsWith("https://") ? "_blank" : undefined}
     >
       <span className="mt-0.5 shrink-0 text-blue-200">{icon}</span>
       <span>
-        <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200">
+        <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-200">
           {label}
         </span>
         <span className="mt-1 block text-sm font-semibold text-white">{value}</span>

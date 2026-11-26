@@ -18,8 +18,12 @@ Run `npm run lint` and `npm run build` before deploying.
 
 - Business details, navigation, WhatsApp number, and services: `src/data/site-config.ts`
 - Sample articles and illustrative case-study concepts: `src/data/sample-content.ts`
-- Temporary stock photography is stored in `public/images`; replace it with
-  approved ADD Creatives and client imagery before launch.
+- Illustrative stock photography is stored in `public/images`; replace it with
+  approved, properly licensed ADD Creatives and client imagery before launch.
+  The photos are not ADD Creatives staff, client work, or campaign results.
+- The official logo and approved letterhead details have not been supplied yet.
+  Replace the text wordmark or update the relevant business details only after
+  the owner provides the approved brand files and confirms the contact details.
 - Replace the clearly labelled sample case studies with approved client work
   before launch. Do not present sample concepts as completed client results.
 - Social links are empty until real profile URLs are supplied.

@@ -19,7 +19,8 @@ export function SiteFooter() {
             {siteConfig.company.tagline}. Thoughtful digital work for brands
             ready to move forward.
           </p>
-          <div className="mt-6 flex gap-2">
+          {siteConfig.socialLinks.some((link) => link.href) ? (
+            <div className="mt-6 flex flex-wrap gap-2">
             {siteConfig.socialLinks
               .filter((link) => link.href)
               .map((link) => (
@@ -34,12 +35,8 @@ export function SiteFooter() {
                   {link.label}
                 </a>
               ))}
-            {siteConfig.socialLinks.every((link) => !link.href) ? (
-              <span className="text-xs text-blue-100/50">
-                Social links coming soon
-              </span>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
 
         <div>
@@ -106,6 +103,14 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
+              <a
+                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                href={siteConfig.company.website}
+              >
+                {siteConfig.company.website.replace(/^https?:\/\//, "")}
+              </a>
+            </li>
+            <li>
               <Link
                 className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-white"
                 href="/contact"
@@ -118,9 +123,7 @@ export function SiteFooter() {
       </Container>
       <Container className="flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-blue-100/50 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} ADD Creatives. All rights reserved.</p>
-        <a className="transition hover:text-white" href={siteConfig.company.website}>
-          {siteConfig.company.website.replace(/^https?:\/\//, "")}
-        </a>
+        <p>Based in Lahore, Pakistan</p>
       </Container>
     </footer>
   );
