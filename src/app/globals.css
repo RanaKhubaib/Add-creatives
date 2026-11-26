@@ -79,6 +79,13 @@ body {
   mask-image: linear-gradient(to bottom, black, transparent 95%);
 }
 
+.hero-banner-bg {
+  background:
+    radial-gradient(ellipse at 83% 24%, rgb(90 109 245 / 34%), transparent 34%),
+    radial-gradient(ellipse at 15% 86%, rgb(215 255 112 / 10%), transparent 38%),
+    linear-gradient(118deg, #0b1220 6%, #111a31 58%, #171a39 100%);
+}
+
 .hero-glow {
   animation: glow-drift 12s ease-in-out infinite alternate;
 }
