@@ -5,15 +5,19 @@ import { siteConfig } from "@/data/site-config";
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-[#091b36] text-white">
-      <div className="h-1 w-full bg-gradient-to-r from-brand-blue via-accent to-[#8eb5ee]" />
+    <footer className="relative overflow-hidden border-t border-white/10 bg-deep-blue text-white">
+      <div aria-hidden="true" className="hero-glow absolute -right-32 -top-40 h-80 w-80 rounded-full bg-brand-blue/20 blur-[90px]" />
+      <div className="h-1 w-full bg-gradient-to-r from-accent via-brand-blue to-accent" />
       <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.9fr_1.2fr] lg:py-20">
         <div>
           <Link
-            className="font-display text-xl font-extrabold tracking-[-0.07em]"
+            className="inline-flex items-center gap-2 font-display text-xl font-bold tracking-[-0.07em]"
             href="/"
           >
-            <span className="text-[#8eb5ee]">ADD</span> CREATIVES
+            <span>
+              <span className="text-accent">ADD</span> CREATIVES
+            </span>
+            <span className="h-2 w-2 rounded-full bg-brand-blue" />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-blue-100/70">
             {siteConfig.company.tagline}. Thoughtful digital work for brands
@@ -47,7 +51,7 @@ export function SiteFooter() {
             {siteConfig.menuItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  className="text-sm text-blue-100/70 transition hover:text-white"
+                  className="text-sm text-blue-100/65 transition-colors hover:text-accent"
                   href={item.href}
                 >
                   {item.label}
@@ -65,7 +69,7 @@ export function SiteFooter() {
             {siteConfig.services.map((service) => (
               <li key={service.slug}>
                 <Link
-                  className="text-sm text-blue-100/70 transition hover:text-white"
+                  className="text-sm text-blue-100/65 transition-colors hover:text-accent"
                   href={`/services/${service.slug}`}
                 >
                   {service.title}
@@ -86,7 +90,7 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                className="flex items-center gap-3 text-sm text-blue-100/65 transition-colors hover:text-accent"
                 href={`tel:${siteConfig.company.phone.replace(/\s/g, "")}`}
               >
                 <Phone aria-hidden="true" className="text-blue-200" size={17} />
@@ -95,7 +99,7 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                className="flex items-center gap-3 text-sm text-blue-100/65 transition-colors hover:text-accent"
                 href={`mailto:${siteConfig.company.email}`}
               >
                 <Mail aria-hidden="true" className="text-blue-200" size={17} />
@@ -104,7 +108,7 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                className="flex items-center gap-3 text-sm text-blue-100/70 transition hover:text-white"
+                className="flex items-center gap-3 text-sm text-blue-100/65 transition-colors hover:text-accent"
                 href={siteConfig.company.website}
               >
                 {siteConfig.company.website.replace(/^https?:\/\//, "")}
@@ -112,7 +116,7 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
-                className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-white"
+                className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-white"
                 href="/contact"
               >
                 Start a project <ArrowUpRight aria-hidden="true" size={16} />

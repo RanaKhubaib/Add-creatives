@@ -79,7 +79,7 @@ export function ContactForm() {
             What can we help with?
           </span>
           <select
-            className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition focus:border-brand-blue focus:ring-4 focus:ring-blue-100"
+            className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition focus:border-brand-blue focus:ring-4 focus:ring-accent/30"
             defaultValue=""
             name="service"
             required
@@ -101,7 +101,7 @@ export function ContactForm() {
           Approximate budget
         </span>
         <select
-          className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition focus:border-brand-blue focus:ring-4 focus:ring-blue-100"
+          className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition focus:border-brand-blue focus:ring-4 focus:ring-accent/30"
           defaultValue=""
           name="budget"
         >
@@ -118,7 +118,7 @@ export function ContactForm() {
           Tell us about your project
         </span>
         <textarea
-          className="min-h-36 w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-brand-blue focus:ring-4 focus:ring-blue-100"
+          className="min-h-36 w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-brand-blue focus:ring-4 focus:ring-accent/30"
           maxLength={4000}
           name="message"
           placeholder="What are you hoping to achieve?"
@@ -152,7 +152,7 @@ export function ContactForm() {
         </p>
       ) : null}
       <button
-        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-bold text-white transition hover:bg-navy disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-deep-blue transition hover:bg-[#e4ff9d] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         disabled={state.status === "sending"}
         type="submit"
       >
@@ -192,7 +192,7 @@ function Field({
       <span className="mb-2 block text-sm font-semibold text-ink">{label}</span>
       <input
         autoComplete={name === "name" ? "name" : name === "email" ? "email" : "tel"}
-        className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-brand-blue focus:ring-4 focus:ring-blue-100"
+        className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-brand-blue focus:ring-4 focus:ring-accent/30"
         maxLength={160}
         name={name}
         placeholder={placeholder}

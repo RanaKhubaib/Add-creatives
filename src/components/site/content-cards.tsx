@@ -11,10 +11,10 @@ function Artwork({
   imageSrc: string;
 }) {
   return (
-    <div className="relative aspect-[1.55] overflow-hidden bg-light-blue">
+    <div className="image-frame relative aspect-[1.55] overflow-hidden rounded-[1.15rem] bg-light-blue">
       <Image
         alt={imageAlt}
-        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+        className="object-cover"
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         src={imageSrc}
@@ -26,9 +26,9 @@ function Artwork({
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Link className="group block" href={`/case-studies/${study.slug}`}>
-      <article className="h-full">
+      <article className="h-full rounded-[1.5rem] border border-slate-200 bg-white p-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand-blue/40 group-hover:shadow-[0_24px_50px_-36px_rgba(19,29,46,0.65)]">
         <Artwork imageAlt={study.coverImageAlt} imageSrc={study.coverImage} />
-        <div className="editorial-rule mt-4 pt-4">
+        <div className="px-2 pb-2 pt-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
               {study.category}
@@ -60,9 +60,9 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link className="group block" href={`/blog/${post.slug}`}>
-      <article className="h-full">
+      <article className="h-full rounded-[1.5rem] border border-slate-200 bg-white p-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand-blue/40 group-hover:shadow-[0_24px_50px_-36px_rgba(19,29,46,0.65)]">
         <Artwork imageAlt={post.coverImageAlt} imageSrc={post.coverImage} />
-        <div className="editorial-rule mt-4 pt-4">
+        <div className="px-2 pb-2 pt-4">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-medium text-muted">
             <span className="font-semibold text-brand-blue">{post.category}</span>
             <span aria-hidden="true" className="h-1 w-1 bg-slate-300" />

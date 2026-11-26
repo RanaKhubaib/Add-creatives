@@ -76,14 +76,14 @@ export default function ServicesPage() {
                   <article className="grid gap-6 border-t border-slate-300 py-8 md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
                     <Link
                       aria-label={`Explore ${service.title}`}
-                      className={`group relative block aspect-[1.55] overflow-hidden bg-light-blue ${
+                      className={`image-frame group relative block aspect-[1.55] overflow-hidden rounded-[1.5rem] bg-light-blue ${
                         imageFirst ? "md:order-2" : ""
                       }`}
                       href={`/services/${service.slug}`}
                     >
                       <Image
                         alt={service.imageAlt}
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        className="object-cover"
                         fill
                         sizes="(max-width: 768px) 100vw, 48vw"
                         src={service.image}
@@ -142,7 +142,7 @@ export default function ServicesPage() {
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {serviceConnections.map((item, index) => (
               <FadeIn delay={index * 0.05} key={item.number}>
-                <div className="border-t border-slate-300 pt-5">
+                <div className="h-full rounded-2xl border-t border-slate-300 bg-white/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/50 hover:bg-white hover:shadow-[0_20px_44px_-32px_rgba(19,29,46,0.55)]">
                   <span className="text-xs font-semibold text-brand-blue">
                     {item.number}
                   </span>

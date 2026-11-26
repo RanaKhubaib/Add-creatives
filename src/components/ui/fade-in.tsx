@@ -19,10 +19,14 @@ export function FadeIn({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 24, scale: 0.985 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: shouldReduceMotion ? 0 : 0.55, delay }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.7,
+        delay,
+        ease: [0.22, 0.61, 0.36, 1],
+      }}
     >
       {children}
     </motion.div>

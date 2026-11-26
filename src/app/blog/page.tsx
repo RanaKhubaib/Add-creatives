@@ -38,10 +38,10 @@ export default async function BlogPage() {
                 className="group grid gap-6 border-y border-slate-300 py-6 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-10 lg:gap-16"
                 href={`/blog/${featuredPost.slug}`}
               >
-                <figure className="relative order-2 aspect-[1.45] overflow-hidden bg-light-blue md:order-1">
+                <figure className="image-frame relative order-2 aspect-[1.45] overflow-hidden rounded-[1.5rem] bg-light-blue md:order-1">
                   <Image
                     alt={featuredPost.coverImageAlt}
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                    className="object-cover"
                     fill
                     sizes="(max-width: 768px) 100vw, 52vw"
                     src={featuredPost.coverImage}

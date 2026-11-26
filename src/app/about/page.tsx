@@ -145,7 +145,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {values.map(([title, text], index) => (
               <FadeIn
-                className="border-t border-slate-300 py-5"
+                className="group border-t border-slate-300 py-5 transition-colors hover:border-brand-blue"
                 delay={index * 0.035}
                 key={title}
               >
@@ -196,10 +196,10 @@ export default function AboutPage() {
         <Container className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <FadeIn>
             <figure>
-              <div className="relative aspect-[1.4] overflow-hidden bg-light-blue">
+              <div className="image-frame group relative aspect-[1.4] overflow-hidden rounded-[1.75rem] bg-light-blue">
                 <Image
                   alt="A notebook with interface sketches and planning notes, shown as illustrative stock photography."
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   src="/images/digital-studio.jpg"

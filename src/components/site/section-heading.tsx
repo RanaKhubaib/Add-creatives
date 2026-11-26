@@ -14,14 +14,14 @@ export function SectionHeading({
   return (
     <div className="max-w-3xl">
       <p
-        className={`text-xs font-bold uppercase tracking-[0.2em] ${
-          light ? "text-blue-200" : "text-brand-blue"
+        className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+          light ? "text-accent" : "text-brand-blue"
         }`}
       >
         {eyebrow}
       </p>
       <h2
-        className={`mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-0.055em] sm:text-4xl lg:text-5xl ${
+        className={`mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.055em] sm:text-4xl lg:text-5xl ${
           light ? "text-white" : "text-ink"
         }`}
       >
@@ -30,7 +30,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={`mt-4 max-w-2xl text-base leading-7 ${
-            light ? "text-blue-100/70" : "text-slate-600"
+            light ? "text-blue-100/70" : "text-muted"
           }`}
         >
           {description}

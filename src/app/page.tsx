@@ -2,14 +2,15 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  MoveUpRight,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { BlogCard, CaseStudyCard } from "@/components/site/content-cards";
+import { HomeHero } from "@/components/site/home-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { ServiceCard } from "@/components/site/service-card";
+import { TechnologyStack } from "@/components/site/technology-stack";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -109,89 +110,12 @@ export default async function Home() {
     getCaseStudies(),
   ]);
   const featuredPost = blogPosts[0];
-  const serviceSpans = [
-    "lg:col-span-7",
-    "lg:col-span-5",
-    "lg:col-span-4",
-    "lg:col-span-4",
-    "lg:col-span-4",
-    "lg:col-span-12",
-  ];
 
   return (
     <main>
-      <section className="border-b border-slate-200 bg-white">
-        <Container className="grid items-center gap-10 py-14 sm:py-18 lg:grid-cols-[1fr_0.92fr] lg:gap-16 lg:py-20">
-          <FadeIn className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
-              Creative agency · Lahore, Pakistan
-            </p>
-            <h1 className="mt-5 font-display text-[clamp(2.9rem,6.6vw,5.75rem)] font-bold leading-[1.02] tracking-[-0.06em] text-ink">
-              Creative solutions.
-              <span className="block text-brand-blue">Digital growth.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              ADD Creatives brings strategy, design, technology, and digital
-              marketing together to help brands build stronger digital
-              experiences and grow with confidence.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/contact">
-                Start a project <ArrowRight aria-hidden="true" size={17} />
-              </Button>
-              <Button href="/case-studies" variant="secondary">
-                Explore our work <ArrowUpRight aria-hidden="true" size={16} />
-              </Button>
-            </div>
-            <p className="mt-7 text-xs font-medium text-muted">
-              Lahore, Pakistan <span aria-hidden="true">·</span> Working
-              wherever good ideas take us
-            </p>
-          </FadeIn>
-          <FadeIn className="min-w-0" delay={0.08}>
-            <figure className="group">
-              <div className="relative aspect-[1.14] overflow-hidden bg-light-blue">
-                <Image
-                  alt="A notebook filled with interface sketches and planning notes, shown as illustrative stock photography."
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 46vw"
-                  src="/images/digital-studio.jpg"
-                />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-deep-blue/80 to-transparent p-5 text-white sm:p-7">
-                  <span className="max-w-xs text-sm font-medium leading-6">
-                    Strategy, design, and technology—working together.
-                  </span>
-                  <MoveUpRight aria-hidden="true" size={20} />
-                </div>
-              </div>
-              <figcaption className="mt-2 text-xs text-muted">
-                Illustrative stock image, not ADD Creatives client work.
-              </figcaption>
-            </figure>
-          </FadeIn>
-        </Container>
-        <div className="border-t border-slate-200">
-          <Container className="flex flex-wrap gap-x-8 gap-y-3 py-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted sm:gap-x-12 sm:py-5">
-            {[
-              "Brand strategy",
-              "Web design",
-              "Search",
-              "Social",
-              "Paid media",
-              "Content",
-            ].map((item) => (
-              <span className="inline-flex items-center gap-3" key={item}>
-                <span aria-hidden="true" className="h-1.5 w-1.5 bg-brand-blue" />
-                {item}
-              </span>
-            ))}
-          </Container>
-        </div>
-      </section>
+      <HomeHero />
 
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="border-b border-slate-200 py-16 sm:py-20 lg:py-24">
         <Container className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <FadeIn>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
@@ -216,10 +140,10 @@ export default async function Home() {
           </FadeIn>
           <FadeIn delay={0.08}>
             <figure>
-              <div className="relative aspect-[1.48] overflow-hidden bg-light-blue">
+              <div className="image-frame group relative aspect-[1.48] overflow-hidden rounded-[1.75rem] bg-light-blue">
                 <Image
                   alt="A group of people collaborating around a laptop; illustrative stock photography, not a photograph of ADD Creatives staff."
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   src="/images/creative-collaboration.jpg"
@@ -234,7 +158,9 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="bg-soft py-16 sm:py-20 lg:py-24">
+      <TechnologyStack />
+
+      <section className="border-b border-slate-200 bg-soft py-16 sm:py-20 lg:py-24">
         <Container>
           <FadeIn>
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -251,10 +177,9 @@ export default async function Home() {
               </Link>
             </div>
           </FadeIn>
-          <div className="mt-9 grid gap-x-6 gap-y-10 lg:grid-cols-12">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {siteConfig.services.map((service, index) => (
               <FadeIn
-                className={serviceSpans[index]}
                 delay={index * 0.04}
                 key={service.slug}
               >
@@ -265,7 +190,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="border-b border-slate-200 py-16 sm:py-20 lg:py-24">
         <Container>
           <FadeIn>
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -296,7 +221,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="bg-deep-blue py-16 text-white sm:py-20 lg:py-24">
+      <section className="border-y border-white/10 bg-deep-blue py-16 text-white sm:py-20 lg:py-24">
         <Container>
           <FadeIn>
             <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
@@ -311,7 +236,7 @@ export default async function Home() {
               <div className="divide-y divide-white/20 border-y border-white/20">
                 {principles.map((item) => (
                   <div
-                    className="grid gap-3 py-5 sm:grid-cols-[3rem_0.8fr_1.2fr] sm:gap-5"
+                    className="group grid gap-3 py-5 transition-colors hover:bg-white/[0.035] sm:grid-cols-[3rem_0.8fr_1.2fr] sm:gap-5"
                     key={item.number}
                   >
                     <span className="text-xs font-semibold text-blue-200">
@@ -329,14 +254,14 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="border-b border-slate-200 py-16 sm:py-20 lg:py-24">
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <FadeIn>
             <figure>
-              <div className="relative aspect-[1.3] overflow-hidden bg-light-blue">
+              <div className="image-frame group relative aspect-[1.3] overflow-hidden rounded-[1.75rem] bg-light-blue">
                 <Image
                   alt="A close view of design sketches and notes on a notebook, used as illustrative stock photography."
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   sizes="(max-width: 1024px) 100vw, 48vw"
                   src="/images/digital-studio.jpg"
@@ -383,7 +308,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
+      <section className="border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -416,7 +341,7 @@ export default async function Home() {
       </section>
 
       {featuredPost ? (
-        <section className="bg-soft py-16 sm:py-20 lg:py-24">
+        <section className="border-y border-slate-200 bg-soft py-16 sm:py-20 lg:py-24">
           <Container>
             <FadeIn>
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -437,10 +362,10 @@ export default async function Home() {
               <FadeIn>
                 <Link className="group block" href={`/blog/${featuredPost.slug}`}>
                   <figure>
-                    <div className="relative aspect-[1.5] overflow-hidden bg-light-blue">
+                    <div className="image-frame group relative aspect-[1.5] overflow-hidden rounded-[1.5rem] bg-light-blue">
                       <Image
                         alt={featuredPost.coverImageAlt}
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         fill
                         sizes="(max-width: 1024px) 100vw, 58vw"
                         src={featuredPost.coverImage}

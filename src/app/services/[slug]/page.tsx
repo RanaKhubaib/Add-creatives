@@ -1,11 +1,11 @@
 import { ArrowRight, ArrowUpRight, Check, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { siteConfig } from "@/data/site-config";
 
@@ -42,117 +42,18 @@ export default async function ServiceDetailPage({
   const relatedServices = siteConfig.services
     .filter((item) => item.slug !== service.slug)
     .slice(0, 3);
-  const isDark = service.imageLayout === "dark";
-  const isWide = service.imageLayout === "wide";
-  const imageOnLeft =
-    service.imageLayout === "left" || service.imageLayout === "portrait";
-  const imageAspect =
-    service.imageLayout === "portrait"
-      ? "aspect-[0.92]"
-      : service.imageLayout === "wide"
-        ? "aspect-[2.05]"
-        : "aspect-[1.2]";
-
-  const heroCopy = (
-    <div className="max-w-2xl">
-      <p
-        className={`text-xs font-semibold uppercase tracking-[0.18em] ${
-          isDark ? "text-blue-200" : "text-brand-blue"
-        }`}
-      >
-        ADD Creatives <span aria-hidden="true">/</span> {service.title}
-      </p>
-      <h1
-        className={`mt-4 font-display text-[clamp(2.5rem,5.5vw,4.75rem)] font-semibold leading-[1.04] tracking-[-0.055em] ${
-          isDark ? "text-white" : "text-ink"
-        }`}
-      >
-        {service.heroTitle}
-      </h1>
-      <p
-        className={`mt-5 max-w-xl text-base leading-7 sm:text-lg sm:leading-8 ${
-          isDark ? "text-blue-100/80" : "text-muted"
-        }`}
-      >
-        {service.shortDescription}
-      </p>
-      <Button
-        className="mt-7"
-        href="/contact"
-        variant={isDark ? "light" : "primary"}
-      >
-        Talk to us about this service
-        <ArrowRight aria-hidden="true" size={16} />
-      </Button>
-    </div>
-  );
-
-  const heroImage = (
-    <figure className="min-w-0">
-      <div className={`relative ${imageAspect} overflow-hidden bg-light-blue`}>
-        <Image
-          alt={service.imageAlt}
-          className="object-cover"
-          fill
-          priority
-          sizes={isWide ? "100vw" : "(max-width: 1024px) 100vw, 48vw"}
-          src={service.image}
-        />
-      </div>
-      <figcaption
-        className={`mt-2 text-xs ${
-          isDark ? "text-blue-100/70" : "text-muted"
-        }`}
-      >
-        Illustrative stock image—not ADD Creatives client work.
-      </figcaption>
-    </figure>
-  );
 
   return (
     <main>
-      <section
-        className={`border-b ${
-          isDark
-            ? "border-deep-blue bg-deep-blue text-white"
-            : service.imageLayout === "left"
-              ? "border-slate-200 bg-soft"
-              : "border-slate-200 bg-white"
-        } py-12 sm:py-16 lg:py-20`}
-      >
-        <Container>
-          <div
-            className={`mb-8 flex items-center gap-2 text-xs ${
-              isDark ? "text-blue-100/70" : "text-muted"
-            }`}
-          >
-            <Link className="transition-colors hover:text-brand-blue" href="/">
-              Home
-            </Link>
-            <span aria-hidden="true">/</span>
-            <Link
-              className="transition-colors hover:text-brand-blue"
-              href="/services"
-            >
-              Services
-            </Link>
-            <span aria-hidden="true">/</span>
-            <span>{service.title}</span>
-          </div>
-          {isWide ? (
-            <div className="space-y-9">
-              {heroCopy}
-              {heroImage}
-            </div>
-          ) : (
-            <div className="grid items-center gap-9 lg:grid-cols-2 lg:gap-16">
-              {imageOnLeft ? heroImage : null}
-              {heroCopy}
-              {!imageOnLeft ? heroImage : null}
-            </div>
-          )}
-        </Container>
-      </section>
+      <PageHero
+        actionLabel="Talk to us about this service"
+        description={service.shortDescription}
+        eyebrow={service.title}
+        image={service.image}
+        imageAlt={service.imageAlt}
+        imageNote="Illustrative stock image—not ADD Creatives client work."
+        title={service.heroTitle}
+      />
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --brand-navy: #124072;
-  --brand-accent: #1b5796;
-  --brand-blue: #1b5796;
-  --brand-deep: #0d3158;
-  --brand-ink: #111820;
-  --brand-muted: #687482;
-  --brand-light-blue: #eaf1f8;
-  --brand-soft: #f5f7fa;
-  --brand-white: #ffffff;
+  --brand-navy: #131d2e;
+  --brand-accent: #d7ff70;
+  --brand-blue: #5a6df5;
+  --brand-deep: #0b1220;
+  --brand-ink: #131a24;
+  --brand-muted: #687384;
+  --brand-light-blue: #eef0ff;
+  --brand-soft: #f4f3ed;
+  --brand-white: #fbfaf6;
 }
 
 @theme inline {
@@ -22,6 +22,7 @@
   --color-light-blue: var(--brand-light-blue);
   --color-soft: var(--brand-soft);
   --color-white: var(--brand-white);
+  --color-brand-white: var(--brand-white);
   --font-sans: var(--font-inter);
   --font-display: var(--font-inter);
 }
@@ -46,8 +47,8 @@ body {
 }
 
 ::selection {
-  background: var(--brand-light-blue);
-  color: var(--brand-navy);
+  background: var(--brand-accent);
+  color: var(--brand-deep);
 }
 
 .article-content p {
@@ -66,7 +67,44 @@ body {
 }
 
 .editorial-rule {
-  border-top: 1px solid #dce3ea;
+  border-top: 1px solid #d8dbe2;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 5%) 1px, transparent 1px);
+  background-position: center center;
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 95%);
+}
+
+.hero-glow {
+  animation: glow-drift 12s ease-in-out infinite alternate;
+}
+
+.image-frame {
+  isolation: isolate;
+}
+
+.image-frame img {
+  transition:
+    transform 800ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    filter 800ms ease;
+}
+
+.image-frame:hover img {
+  filter: saturate(1.08);
+  transform: scale(1.055);
+}
+
+@keyframes glow-drift {
+  from {
+    transform: translate3d(-4%, 0, 0) scale(0.96);
+  }
+  to {
+    transform: translate3d(5%, 8%, 0) scale(1.08);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
